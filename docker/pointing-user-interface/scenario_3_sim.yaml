@@ -1,0 +1,14 @@
+version: '3'
+services:
+  oneswarm_demo:
+    image: gabry993/pointing-user-interface:galactic
+    network_mode: host
+    pid: host
+    privileged: true
+    command: ros2 launch relloc docker_hri.launch single_LED:=False map_path:="/ros_ws/src/oneswarm_hri_scenes/tutorial_scenario_1_2_3.yaml" do_relloc:=${DO_RELLOC:-False} user_kinematics:="bill" sim_imu:=True rotation_topic:="imu" user_name:="user1" feed:="True"
+    volumes:
+      - ./logs:/root/.ros/log:rw
+      - ./profile.xml:/profile.xml
+    environment:
+      - "FASTRTPS_DEFAULT_PROFILES_FILE=/profile.xml"
+      - "DO_RELLOC=$DO_RELLOC"

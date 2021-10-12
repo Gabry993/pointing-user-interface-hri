@@ -1,0 +1,23 @@
+<launch>
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/belt.yaml"/>
+  <arg name="pointing_tol" default=".7"/>
+  <arg name="pointing_cmap" default=""/>
+
+  <node name="draw_packages" pkg="conveyor_utils" exec="draw_packages" output="screen" args="--ros-args --log-level info">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="selection_colors" value="\{0: [0, 0, 255], 1: [0, 0, 255], 2: [0, 0, 255]\}"/>
+    <param name="colors" value="\{0: [0, 0, 255], 1: [0, 0, 255], 2: [0, 0, 255]\}"/>
+    <param name="pointing_tol" value="$(var pointing_tol)"/>
+    <param name="pointing_cmap" value="$(var pointing_cmap)"/>
+  </node>
+
+  <arg name="joy_dev" default="0"/>
+
+  <node name="joy" pkg="joy" exec="joy_node" output="screen" args="--ros-args --log-level info">
+    <param name="device_id" value="$(var joy_dev)" />
+  </node>
+  <node pkg="joy_teleop" exec="joy_teleop" name="joy_teleop" output="screen" args="--ros-args --log-level info">
+    <param from="$(find-pkg-share conveyor_utils)/config/joy_config.yaml"/>
+  </node>
+
+</launch>

@@ -1,0 +1,6 @@
+uint32 uid
+uint8 kind
+float32 position
+uint8 belt
+---
+bool result

@@ -1,0 +1,107 @@
+<launch>
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/scenario_5_bis_map.yaml"/>
+  <arg name="step_conf" default="$(find-pkg-share conveyor_utils)/config/feeders.yaml"/>
+
+  <arg name="single_LED" default="False"/>
+
+  <arg name="sim_imu" default="False"/>
+  <arg name="update_rate" default="10."/>
+  <arg name="do_relloc" default="True"/>
+  <arg name="use_state_led" default="False"/>
+
+  <arg name="led_on_period" default="3."/>
+  <arg name="relloc_leds" default="['led_1', 'led_3']"/>
+
+  <arg name="publish_rate" default="50."/>
+
+  <arg name="gt_x" default="0"/>
+  <arg name="gt_y" default="0"/>
+  <arg name="gt_yaw" default="0"/>
+  <arg name="rotation_topic" default="/metawear_ros/rotation"/>
+  <arg name="user_kinematics" default="human"/>
+
+
+  <arg name="time_for_selection" default=".5"/>
+  <arg name="pointer_size" default=".2"/>
+  <arg name="pointing_tol" default=".7"/>
+  <arg name="pointing_cmap" default=""/>
+
+  <arg name="sim_packages_on_LED" default="False"/>
+  <arg name="joy_dev" default="0"/>
+  <arg name="belt_speed" default="0.26"/>
+  <arg name="package_length" default="0.8"/>
+  <arg name="feed" default="False"/>
+  <arg name="kind_sequence" default="[0, 1, 2]"/>
+  <arg name="min_interval" default="2."/>
+
+  <arg name="log" default="False"/>
+  <arg name="log_rate" default="10."/>
+  <arg name="exp_name" default=""/>
+  <arg name="log_path" default="/home/gabri/Documents/logs_iros_test2/"/>
+  <arg name="interface" default="PUI"/>
+
+  <node name="multi_task_logger" pkg="iros" exec="multi_task_logger" output="screen" args="--ros-args --log-level info" if="$(var log)">
+    <param name="log_rate" value="$(var log_rate)"/>
+    <param name="exp_name" value="$(var exp_name)"/>
+    <param name="log_path" value="$(var log_path)"/>
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="step_conf" value="$(var step_conf)"/>
+    <param name="interface" value="$(var interface)"/>
+    <param name="update_rate" value="$(var update_rate)"/>
+  </node>
+
+  <node name="supervisor" pkg="relloc" exec="pointing_demo" output="screen" args="--ros-args --log-level info">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="sim_imu" value="$(var sim_imu)"/>
+    <param name="update_rate" value="$(var update_rate)"/>
+    <param name="do_relloc" value="$(var do_relloc)"/>
+    <param name="use_state_led" value="$(var use_state_led)"/>
+  </node>
+
+  <node name="relloc_executor" pkg="relloc" exec="relloc_exec" output="screen" args="--ros-args --log-level info" if="$(var do_relloc)">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="led_on_period" value="$(var led_on_period)"/>
+    <param name="relloc_leds" value="$(var relloc_leds)"/>
+  </node>
+
+  <include file="$(find-pkg-share conveyor_utils)/launch/belt.launch" unless="$(var sim_packages_on_LED)">
+    <arg name="map_path" value="$(var map_path)" />
+    <arg name="pointing_tol" value="$(var pointing_tol)"/>
+    <arg name="pointing_cmap" value="$(var pointing_cmap)"/>
+    <arg name="joy_dev" value="$(var joy_dev)" />
+  </include>
+
+  <node name="multi_feeder" pkg="conveyor_utils" exec="multi_feeder" output="screen" args="--ros-args --log-level info">
+    <param name="feed" value="$(var feed)"/>
+    <param name="step_conf" value="$(var step_conf)"/>
+  </node>
+
+  <include file="$(find-pkg-share volaly_kinematics)/launch/human_kinematics.launch">
+    <arg name="publish_rate" value="$(var publish_rate)" />
+    <arg name="rotation_topic" value="$(var rotation_topic)" />
+    <arg name="user_kinematics" value="$(var user_kinematics)" />
+  </include>
+
+
+  <node name="relloc_node" pkg="relloc" exec="relloc_node" output="screen" args="--ros-args --log-level info">
+    <param name="publish_rate" value="$(var publish_rate)" />
+    <param name="led_on_period" value="$(var led_on_period)"/>
+  </node>
+
+  <node name="pui_node" pkg="conveyor_pui" exec="pui_node" output="screen" args="--ros-args --log-level info" unless="$(var single_LED)">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="time_for_selection" value="$(var time_for_selection)"/>
+    <param name="pointer_size" value="$(var pointer_size)"/>
+    <param name="pointing_tol" value="$(var pointing_tol)"/>
+  </node>
+
+  <node name="single_pui_node" pkg="conveyor_pui" exec="single_LED_pui_node" output="screen" args="--ros-args --log-level info" if="$(var single_LED)">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="pointing_cmap" value="$(var pointing_cmap)"/>
+    <param name="pointing_tol" value="$(var pointing_tol)"/>
+  </node>
+
+  <node name="world_human_gt_bc" pkg="tf2_ros" exec="static_transform_publisher" args="$(var gt_x) $(var gt_y) 0 $(var gt_yaw) 0 0 world human_gt" unless="$(eval '$(var do_relloc) or $(var sim_imu)')"/>
+  <node name="human_gt_human_foot_bc" pkg="tf2_ros" exec="static_transform_publisher" args="0 0 0 0 0 0 1 human_gt human_footprint" unless="$(var do_relloc)"/>
+
+</launch>

@@ -1,0 +1,26 @@
+<launch>
+  <!-- <arg name="address" default="df:e6:50:cd:84:85"/>--> <!-- meta 3-->
+  <!--<arg name="address" default="c1:9d:0e:3c:f6:7e"/>--> <!-- meta 1-->
+  <arg name="address" default="f1:34:82:44:19:d7"/> <!-- meta 4-->
+  <arg name="interface" default="hci0"/>
+  <arg name="persistent_config" default="true"/>
+	   <node pkg="metawear_ros" exec="metawear_node" namespace="$(env USER_NAME)">
+	     <param name="address" value="$(var address)"/>
+	     <param name="interface" value="$(var interface)"/>
+	     <param name="republish_button" value="false"/>
+	     <param name="give_button_feedback" value="true"/>
+	     <param name="pause_streaming_if_no_subscribers" value="false"/>
+	     <param name="publish_rate" value="25"/>
+	     <param name="frame_id" value="mwear"/>
+	     <param name="mimic_myo_frame" value="false"/>
+	     <param name="publish_rate" value=""/>
+	     <param name="save_config" value="$(var persistent_config)"/>
+	     <param name="load_config" value="$(var persistent_config)"/>
+	     <param name="led_color">
+	       <param name="r" value="0.0"/>
+	       <param name="g" value="1.0"/>
+	       <param name="b" value="1.0"/>
+	       <param name="a" value="1.0"/>
+	     </param>
+	  </node>
+</launch>

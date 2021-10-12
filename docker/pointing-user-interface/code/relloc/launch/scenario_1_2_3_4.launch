@@ -1,0 +1,36 @@
+<launch>
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/lab.yaml"/>
+
+  <arg name="single_LED" default="False"/>
+
+  <arg name="time_for_selection" default=".5"/>
+  <arg name="pointing_tol" default=".7"/>
+
+  <arg name="sim_packages_on_LED" default="True"/>
+  <arg name="joy_dev" default="0"/>
+  <arg name="feed" default="False"/>
+
+  <include file="$(find-pkg-share conveyor_utils)/launch/belt.launch" unless="$(var sim_packages_on_LED)">
+    <arg name="map_path" value="$(var map_path)" />
+    <arg name="pointing_tol" value="$(var pointing_tol)"/>
+    <arg name="joy_dev" value="$(var joy_dev)" />
+  </include>
+
+  <include file="$(find-pkg-share conveyor_utils)/launch/lab.launch" if="$(var sim_packages_on_LED)">
+    <arg name="map_path" value="$(var map_path)" />
+    <arg name="pointing_tol" value="$(var pointing_tol)"/>
+    <arg name="joy_dev" value="$(var joy_dev)" />
+    <arg name="feed" value="$(var feed)" />
+  </include>
+
+  <node name="pui_node" pkg="conveyor_pui" exec="pui_node" output="screen" args="--ros-args --log-level info" unless="$(var single_LED)">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="time_for_selection" value="$(var time_for_selection)"/>
+    <param name="pointing_tol" value="$(var pointing_tol)"/>
+  </node>
+
+  <node name="single_pui_node" pkg="conveyor_pui" exec="single_LED_pui_node" output="screen" args="--ros-args --log-level info" if="$(var single_LED)">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="pointing_tol" value="$(var pointing_tol)"/>
+  </node>
+</launch>

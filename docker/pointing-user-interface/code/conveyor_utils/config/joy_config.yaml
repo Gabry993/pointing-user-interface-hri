@@ -1,0 +1,70 @@
+/**:
+  ros__parameters:
+    go_on_button:
+      type: topic
+      interface_type: "std_msgs/msg/Bool"
+      topic_name: /joy/go_on
+      deadman_buttons: [ 6, 7, 1 ]  # LT + RT + A
+      message_value:
+        data:
+          value: True
+    feed_on:
+      type: topic
+      interface_type: "std_msgs/msg/Bool"
+      topic_name: feed
+      deadman_buttons: [6, 1]  # LT + A
+      message_value:
+        data:
+          value: True
+    feed_off:
+      type: topic
+      interface_type: "std_msgs/msg/Bool"
+      topic_name: feed
+      deadman_buttons: [6, 2]  # LT + B
+      message_value:
+        data:
+          value: False
+    belt_on:
+      type: topic
+      interface_type: "conveyor_msgs/msg/BeltCommand"
+      topic_name: belt_cmd
+      deadman_buttons: [ 6, 0]  # LT + X
+      message_value:
+        name:
+          value: ["*"]
+        velocity:
+          value: [0.5]
+    belt_off:
+      type: topic
+      interface_type: "conveyor_msgs/msg/BeltCommand"
+      topic_name: belt_cmd
+      deadman_buttons: [ 6, 3]  # LT + Y
+      message_value:
+        name:
+          value: ["*"]
+        velocity:
+          value: [0.]
+    add_red_pkg:
+      type: topic
+      interface_type: "std_msgs/msg/UInt8"
+      topic_name: add_package
+      deadman_buttons: [ 7, 2 ]  # LT + B
+      message_value:
+        data:
+          value: 0
+    add_green_pkg:
+      type: topic
+      interface_type: "std_msgs/msg/UInt8"
+      topic_name: add_package
+      deadman_buttons: [ 7, 1 ]  # LT + A
+      message_value:
+        data:
+          value: 1
+    add_blue_pkg:
+      type: topic
+      interface_type: "std_msgs/msg/UInt8"
+      topic_name: add_package
+      deadman_buttons: [ 7, 0 ]  # LT + X
+      message_value:
+        data:
+          value: 2

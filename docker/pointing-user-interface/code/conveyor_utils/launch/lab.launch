@@ -1,0 +1,42 @@
+<launch>
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/como.yaml"/>
+
+  <arg name="belt_speed" default="0.26"/>
+  <arg name="package_length" default="0.8"/>
+  <arg name="led_rate" default="10."/>
+  <arg name="pointing_tol" default=".7"/>
+  <arg name="pointing_cmap" default=""/>
+  <arg name="feed" default="False"/>
+  <arg name="kind_sequence" default="[1, 2, 1, 0, 0]"/>
+  <arg name="min_interval" default="4."/>
+
+  <node name="draw_packages" pkg="conveyor_utils" exec="draw_packages" output="screen" args="--ros-args --log-level info">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="selection_colors" value="\{0: [255, 0, 0], 1: [0, 255, 0], 2: [0, 0, 255]\}"/>
+    <param name="colors" value="\{0: [255, 0, 0], 1: [0, 255, 0], 2: [0, 0, 255]\}"/>
+    <param name="pointing_tol" value="$(var pointing_tol)"/>
+    <param name="pointing_cmap" value="$(var pointing_cmap)"/>
+  </node>
+
+  <arg name="joy_dev" default="0"/>
+
+  <node name="joy" pkg="joy" exec="joy_node" output="screen" args="--ros-args --log-level info">
+    <param name="device_id" value="$(var joy_dev)" />
+  </node>
+  <node pkg="joy_teleop" exec="joy_teleop" name="joy_teleop" output="screen" args="--ros-args --log-level info">
+    <param from="$(find-pkg-share conveyor_utils)/config/joy_config.yaml"/>
+  </node>
+
+  <node name="belt_control" pkg="conveyor_utils" exec="belt_control" output="screen" args="--ros-args --log-level info">
+    <param name="map_path" value="$(var map_path)"/>
+    <param name="belt_speed" value="$(var belt_speed)"/>
+    <param name="package_length" value="$(var package_length)"/>
+    <param name="led_rate" value="$(var led_rate)"/>
+  </node>
+
+  <node name="feeder" pkg="conveyor_utils" exec="feeder" output="screen" args="--ros-args --log-level info">
+    <param name="feed" value="$(var feed)"/>
+    <param name="kind_sequence" value="$(var kind_sequence)"/>
+    <param name="min_interval" value="$(var min_interval)"/>
+  </node>
+</launch>

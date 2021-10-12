@@ -1,0 +1,17 @@
+<library path="src">
+  <class name="ConveyorGUI" type="conveyor_gui.conveyor_gui.GUI" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      ...
+    </description>
+    <qtgui>
+      <group>
+        <label>Miscellaneous Tools</label>
+        <icon type="theme">folder</icon>
+        <statustip>Plugins related to miscellaneous tools.</statustip>
+      </group>
+      <label>Conveyor GUI</label>
+      <icon type="theme">applications-python</icon>
+      <statustip>...</statustip>
+    </qtgui>
+  </class>
+</library>

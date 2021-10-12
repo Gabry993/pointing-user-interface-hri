@@ -1,0 +1,638 @@
+steps:
+  -1:
+    speed: 0.5
+    duration: 30.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 4.
+        max_interval: 7.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 4.
+        max_interval: 7.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 4.
+        max_interval: 7.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 4.
+        max_interval: 7.
+  28:
+    speed: 7.5
+    duration: 20.
+    feed: True
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  29:
+    speed: 7.5
+    duration: 20.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  30:
+    speed: 8.0
+    duration: 20.
+    feed: True
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  31:
+    speed: 8.0
+    duration: 20.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  32:
+    speed: 8.5
+    duration: 20.
+    feed: True
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  33:
+    speed: 8.5
+    duration: 20.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  34:
+    speed: 9.0
+    duration: 20.
+    feed: True
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  35:
+    speed: 9.0
+    duration: 20.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  36:
+    speed: 9.5
+    duration: 20.
+    feed: True
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  37:
+    speed: 9.5
+    duration: 20.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  38:
+    speed: 10.
+    duration: 20.
+    feed: True
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+  39:
+    speed: 10.
+    duration: 20.
+    feed: False
+    feeders:
+      a:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      b:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      c:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.
+      d:
+        random: True
+        pack_proba:
+          0: 0.3
+          1: 0.7
+        kind_sequence:
+          - 0
+          - 0
+          - 1
+        min_interval: 3.
+        max_interval: 5.

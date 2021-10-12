@@ -1,0 +1,19 @@
+version: '3'
+services:
+  coppelia:
+    image: gabry993/coppelia_ros:galactic
+    network_mode: host
+    pid: host
+    privileged: true
+    devices:
+      - "/dev/snd:/dev/snd"
+    command: /opt/CoppeliaSim_Edu_V4_2_0_Ubuntu20_04/coppeliaSim.sh
+    volumes:
+      - ./logs:/root/.ros/log:rw
+      - ./profile.xml:/profile.xml
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    environment:
+      - "FASTRTPS_DEFAULT_PROFILES_FILE=/profile.xml"
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+    

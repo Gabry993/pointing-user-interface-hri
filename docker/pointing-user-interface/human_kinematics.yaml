@@ -1,0 +1,6 @@
+footprint_to_neck: 1.43
+neck_to_eyes: 0.21
+# neck_to_shoulder: 0.22
+neck_to_shoulder: 0.0
+shoulder_to_wrist: 0.55
+wrist_to_finger: 0.18

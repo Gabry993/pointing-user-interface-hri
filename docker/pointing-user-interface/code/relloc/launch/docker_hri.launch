@@ -1,0 +1,60 @@
+<launch>
+<!--  common args-->
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/lab.yaml"/>
+
+<!--  environment launch -->
+  <arg name="single_LED" default="False"/>
+  <arg name="time_for_selection" default=".5"/>
+  <arg name="pointing_tol" default=".7"/>
+  <arg name="sim_packages_on_LED" default="True"/>
+  <arg name="joy_dev" default="0"/>
+  <arg name="feed" default="False"/>
+
+  <include file="$(find-pkg-share relloc)/launch/scenario_1_2_3_4.launch">
+    <arg name="map_path" value="$(var map_path)" />
+    <arg name="single_LED" value="$(var single_LED)"/>
+    <arg name="time_for_selection" value="$(var time_for_selection)"/>
+    <arg name="pointing_tol" value="$(var pointing_tol)"/>
+    <arg name="sim_packages_on_LED" value="$(var sim_packages_on_LED)"/>
+    <arg name="joy_dev" value="$(var joy_dev)"/>
+    <arg name="feed" value="$(var feed)"/>
+  </include>
+
+<!--  user/pui launch-->
+  <arg name="sim_imu" default="False"/>
+  <arg name="update_rate" default="10."/>
+  <arg name="do_relloc" default="True"/>
+  <arg name="use_state_led" default="False"/>
+  <arg name="led_on_period" default="3."/>
+  <arg name="relloc_leds" default="['led_1', 'led_2']"/>
+  <arg name="publish_rate" default="50."/>
+  <arg name="gt_x" default="0"/>
+  <arg name="gt_y" default="0"/>
+  <arg name="gt_yaw" default="0"/>
+  <arg name="rotation_topic" default="metawear_ros/rotation"/>
+  <arg name="user_kinematics" default="human"/>
+  <arg name="user_name" default="user1"/>
+  <arg name="pointer_size" default=".2"/>
+  <arg name="pointer_color" default="[1., 1., 0.]"/>
+  <arg name="pointer_cmap" default=""/>
+
+  <include file="$(find-pkg-share relloc)/launch/user.launch">
+      <arg name="map_path" value="$(var map_path)" />
+      <arg name="sim_imu" value="$(var sim_imu)"/>
+      <arg name="update_rate" value="$(var update_rate)"/>
+      <arg name="do_relloc" value="$(var do_relloc)"/>
+      <arg name="use_state_led" value="$(var use_state_led)"/>
+      <arg name="led_on_period" value="$(var led_on_period)"/>
+      <arg name="relloc_leds" value="$(var relloc_leds)"/>
+      <arg name="publish_rate" value="$(var publish_rate)"/>
+      <arg name="gt_x" value="$(var gt_x)"/>
+      <arg name="gt_y" value="$(var gt_y)"/>
+      <arg name="gt_yaw" value="$(var gt_yaw)"/>
+      <arg name="rotation_topic" value="$(var rotation_topic)"/>
+      <arg name="user_kinematics" value="$(var user_kinematics)"/>
+      <arg name="user_name" value="$(var user_name)"/>
+      <arg name="pointer_size" value="$(var pointer_size)"/>
+      <arg name="pointer_color" value="$(var pointer_color)"/>
+      <arg name="pointer_cmap" value="$(var pointer_cmap)"/>
+  </include>
+</launch>

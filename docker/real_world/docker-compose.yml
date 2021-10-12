@@ -1,0 +1,32 @@
+version: '3'
+services:
+  metawear_ros:
+    image: gabry993/metawear_ros:kdl
+    network_mode: host
+    privileged: true
+    command: ros2 launch metawear_ros _main.launch
+    volumes:
+      - ./logs:/root/.ros/log:rw
+      - ./_main.launch:/ros_ws/install/share/metawear_ros/launch/_main.launch:ro
+      - ./profile.xml:/profile.xml
+    environment:
+      - "FASTRTPS_DEFAULT_PROFILES_FILE=/profile.xml"
+      - "USER_NAME=$USER_NAME"
+  single_LED_driver:
+    image: microros/micro-ros-agent:galactic
+    network_mode: host
+    pid: host
+    command: udp4 --port 8888 -v4 -d
+    volumes:
+      - ./profile.xml:/profile.xml
+    environment:
+      - "FASTRTPS_DEFAULT_PROFILES_FILE=/profile.xml"
+  led_strip_driver:
+    image: jeguzzi/led_strip_driver:galactic
+    privileged: true
+    network_mode: host
+    command: ros2 launch led_strip_driver main.launch device:=/dev/ttyS0
+    volumes:
+      - ./profile.xml:/profile.xml
+    environment:
+      - "FASTRTPS_DEFAULT_PROFILES_FILE=/profile.xml"

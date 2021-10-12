@@ -1,0 +1,6 @@
+# clipped in [0, 1], 0.0: off, 1.0: full
+float32 brightness
+
+# which led strips? Leave to 0xFF to set the brighness for all strips
+uint8 channel_index_mask 255
+---

@@ -1,0 +1,20 @@
+<package format="2">
+  <name>conveyor_gui</name>
+  <version>1.0.0</version>
+  <description>Bla</description>
+  <maintainer email="jerome@idsia.ch">Jerome Guzzi</maintainer>
+  <license>BSD</license>
+  <author>Jerome Guzzi</author>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend version_gte="0.2.19">python_qt_binding</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>rqt_gui</exec_depend>
+  <exec_depend>rqt_gui_py</exec_depend>
+  <exec_depend>rqt_py_common</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+    <rqt_gui plugin="${prefix}/plugin.xml"/>
+  </export>
+</package>

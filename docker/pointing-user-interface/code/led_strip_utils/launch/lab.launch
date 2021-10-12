@@ -1,0 +1,20 @@
+<launch>
+
+  <arg name="period" default="0.1"/>
+  <arg name="step" default="-1"/>
+  <arg name="brightness_period" default="0.0"/>
+  <arg name="brightness_step" default="0.05"/>
+  <arg name="brightness_value" default="1.0"/>
+  <arg name="config" default="lab"/>
+
+  <node name="led_pattern" pkg="led_strip_utils" exec="pattern" output="screen" args="--ros-args --log-level info">
+    <param name="map_path" value="$(find-pkg-share led_strip_utils)/launch/$(var config).yaml"/>
+    <param name="period" value="$(var period)"/>
+    <param name="step" value="$(var step)"/>
+    <param name="brightness">
+      <param name="period" value="$(var brightness_period)"/>
+      <param name="step" value="$(var brightness_step)"/>
+      <param name="value" value="$(var brightness_value)"/>
+    </param>
+  </node>
+</launch>

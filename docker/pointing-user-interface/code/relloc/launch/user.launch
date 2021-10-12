@@ -1,0 +1,62 @@
+<launch>
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/lab.yaml"/>
+
+  <arg name="sim_imu" default="False"/>
+  <arg name="update_rate" default="10."/>
+  <arg name="do_relloc" default="True"/>
+  <arg name="use_state_led" default="False"/>
+
+  <arg name="led_on_period" default="3."/>
+  <arg name="relloc_leds" default="['led_1', 'led_2']"/>
+
+  <arg name="publish_rate" default="50."/>
+
+  <arg name="gt_x" default="0"/>
+  <arg name="gt_y" default="0"/>
+  <arg name="gt_yaw" default="0"/>
+  <arg name="rotation_topic" default="metawear_ros/rotation"/>
+  <arg name="user_kinematics" default="human"/>
+
+  <arg name="user_name" default="user1"/>
+  <let name="user_tf_prefix" value="$(eval '\'$(var user_name)/\' if \'$(var user_name)\' else \'\'')"/>
+  <arg name="pointer_size" default=".2"/>
+  <arg name="pointer_color" default="[1., 1., 0.]"/>
+  <arg name="pointer_cmap" default=""/>
+
+  <include file="$(find-pkg-share volaly_kinematics)/launch/human_kinematics.launch">
+    <arg name="publish_rate" value="$(var publish_rate)" />
+    <arg name="rotation_topic" value="$(var rotation_topic)" />
+    <arg name="user_kinematics" value="$(var user_kinematics)" />
+    <arg name="user_name" value="$(var user_name)" />
+  </include>
+
+  <group>
+     <push-ros-namespace namespace="$(var user_name)"/>
+      <node name="supervisor" pkg="relloc" exec="pointing_demo" output="screen" args="--ros-args --log-level info">
+        <param name="map_path" value="$(var map_path)"/>
+        <param name="sim_imu" value="$(var sim_imu)"/>
+        <param name="update_rate" value="$(var update_rate)"/>
+        <param name="do_relloc" value="$(var do_relloc)"/>
+        <param name="use_state_led" value="$(var use_state_led)"/>
+        <param name="user_name" value="$(var user_name)"/>
+        <param name="pointer_size" value="$(var pointer_size)"/>
+        <param name="pointer_color" value="$(var pointer_color)"/>
+        <param name="pointer_cmap" value="$(var pointer_cmap)"/>
+      </node>
+
+      <node name="relloc_executor" pkg="relloc" exec="relloc_exec" output="screen" args="--ros-args --log-level info" if="$(var do_relloc)">
+        <param name="map_path" value="$(var map_path)"/>
+        <param name="led_on_period" value="$(var led_on_period)"/>
+        <param name="relloc_leds" value="$(var relloc_leds)"/>
+      </node>
+
+      <node name="relloc_node" pkg="relloc" exec="relloc_node" output="screen" args="--ros-args --log-level info">
+        <param name="publish_rate" value="$(var publish_rate)" />
+        <param name="led_on_period" value="$(var led_on_period)"/>
+        <param name="user_tf_prefix" value="$(var user_tf_prefix)"/>
+      </node>
+
+      <node name="world_human_gt_bc" pkg="tf2_ros" exec="static_transform_publisher" args="$(var gt_x) $(var gt_y) 0 $(var gt_yaw) 0 0 world $(var user_tf_prefix)human_gt" unless="$(eval '$(var do_relloc) or $(var sim_imu)')"/>
+      <node name="human_gt_human_foot_bc" pkg="tf2_ros" exec="static_transform_publisher" args="0 0 0 0 0 0 1 $(var user_tf_prefix)human_gt $(var user_tf_prefix)human_footprint" unless="$(var do_relloc)"/>
+  </group>
+</launch>

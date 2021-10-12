@@ -1,0 +1,7 @@
+strips:
+  0:
+    pixels: 150
+    direction: -1
+  1:
+    pixels: 150
+    direction: 1
