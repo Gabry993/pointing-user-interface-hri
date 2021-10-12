@@ -24,7 +24,8 @@ RUN apt-get update -q && \
         ros-galactic-example-interfaces \
         ros-galactic-example-interfaces \
         libavcodec-dev libavformat-dev libswscale-dev \
-        cmake libblkid-dev e2fslibs-dev libboost-all-dev libaudit-dev \
+        #cmake libblkid-dev e2fslibs-dev libboost-all-dev libaudit-dev \
+        cmake libboost-all-dev wget \
         && \
     apt-get autoclean -y && apt-get autoremove -y && apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -32,7 +33,9 @@ RUN apt-get update -q && \
 RUN mkdir -p /shared /opt
 RUN python3 -m pip install -U xmlschema
 
-COPY ./download/CoppeliaSim_Edu_V4_2_0_Ubuntu20_04.tar.xz /opt/
+# COPY ./download/CoppeliaSim_Edu_V4_2_0_Ubuntu20_04.tar.xz /opt/
+RUN cd /opt/ && \
+	wget https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_2_0_Ubuntu20_04.tar.xz
 RUN tar -xf /opt/CoppeliaSim_Edu_V4_2_0_Ubuntu20_04.tar.xz -C /opt && \
     rm /opt/CoppeliaSim_Edu_V4_2_0_Ubuntu20_04.tar.xz
 
