@@ -36,7 +36,7 @@ Then, they should connect to the same network running our docker container.
 ### Drivers
 To replicate our hardware setup, we provide containers for `metawear_ros`, `single_LEDs`
 and `LED_strips` ROS2 drivers. Of course those could be replaced with different hardware, but is important that they expose the same information or interface. In particular:
-* `metawear` can be replaced with any IMU providing a continuous stream of `geometry_msgs/msg/QuaternionStamped` messages (see [PUI interface](#pui-Interface))
+* `metawear` can be replaced with any IMU providing a continuous stream of `geometry_msgs/msg/QuaternionStamped` messages (see [PUI interface](#2---users-pointing-rays))
 * `single_LED` controller must expose a topic named `/led_number/color` of type `std_msgs/msg/ColorRGBA`
 * `LED_strips` controller must expose a topic named `/led_strips` of type `led_strips_msgs/msg/LedStrips` (check the [source code](docker/pointing-user-interface/code/led_strip_msgs/msg/LedStrips.msg) for details)
  
@@ -69,7 +69,7 @@ use to move user's shoulder joint and compute the pointing ray as the ray origin
 and passing through their index fingertip.
 
 Note that user biometry may be updated to obtain a more accurate pointing reconstruction. To do so,
-edit the [human_kinematics.yaml](docker/real_world/human_kinematics.yaml) file accordingly in [docker/real_world](docker/real_world).
+edit the [human_kinematics.yaml](docker/pointing-user-interface/human_kinematics.yaml) file accordingly in `docker/pointing-user-interface/`.
 
 ## 3 - Environment and Object Maps
 The environment map is used to intersect pointing rays with the system. In that way we can understand if the user is pointing at a given object within the environment and also provide a feedback cursor, so that they know where the system thinks they are pointing.
@@ -160,7 +160,7 @@ In scenario 1 users, once localized, can point at a set of single LED lights and
 The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
 
 ### Simulation
-[Launch CoppeliaSim container](TODO LINK). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
+[Launch CoppeliaSim container](#scenarios). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
@@ -169,8 +169,7 @@ docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
-Start the interaction by pressing the metawear button as explained TODO:ADD REF
-
+Start the interaction by pressing the metawear button as explained [before](#scenarios)
 ### Real World
 Launch all the drivers containers, then edit `docker/oneswarm_hri/docker-compose.yml` command (line 8):
 ```
@@ -183,5 +182,4 @@ Then, launch the container:
 cd docker/oneswarm_hri
 docker-compose up
 ```
-Start the interaction by pressing the metawear button as explained TODO:ADD REF
-
+Start the interaction by pressing the metawear button as explained [before](#scenarios)
