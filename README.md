@@ -36,9 +36,9 @@ Then, they should connect to the same network running our docker container.
 ### Drivers
 To replicate our hardware setup, we provide containers for `metawear_ros`, `single_LEDs`
 and `LED_strips` ROS2 drivers. Of course those could be replaced with different hardware, but is important that they expose the same information or interface. In particular:
-* `metawear` can be replaced with any IMU providing a continuous stream of `geometry_msgs/msg/QuaternionStamped` messages (see PUI interface) TODO LINK
+* `metawear` can be replaced with any IMU providing a continuous stream of `geometry_msgs/msg/QuaternionStamped` messages (see [PUI interface](#pui-Interface))
 * `single_LED` controller must expose a topic named `/led_number/color` of type `std_msgs/msg/ColorRGBA`
-* `LED_strips` controller must expose a topic named `/led_strips` of type `led_strips_msgs/msg/LedStrips` (check the [source code](docker/pointing-user-interface/code/) for details)
+* `LED_strips` controller must expose a topic named `/led_strips` of type `led_strips_msgs/msg/LedStrips` (check the [source code](docker/pointing-user-interface/code/led_strip_msgs/msg/LedStrips.msg) for details)
  
 # PUI Interface
 Our PUI interface has 3 inputs:
