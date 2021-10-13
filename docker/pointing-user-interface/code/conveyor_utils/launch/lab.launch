@@ -1,5 +1,5 @@
 <launch>
-  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/como.yaml"/>
+  <arg name="map_path" default="$(find-pkg-share conveyor_utils)/launch/lab.yaml"/>
 
   <arg name="belt_speed" default="0.26"/>
   <arg name="package_length" default="0.8"/>

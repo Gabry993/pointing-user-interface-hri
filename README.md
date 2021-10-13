@@ -117,7 +117,7 @@ docker-compose up
 On another terminal (both for simulation and real world),
 ```
 cd docker/pointing-user-interface
-docker-compose -f scene_[1,2,3,4]_[sim,real].yaml up
+docker-compose -f scenario_[1,2,3,4]_[sim,real].yaml up
 ```
 ### Starting the Drivers
 To launch all the drivers for the real world scenarios:
@@ -136,7 +136,7 @@ If this option is checked, after triggering the interaction, Bill will perform t
 Also, when launching the `pointing-user-interface` container, set the environment variable `DO_RELLOC=True`, like this:
  ```
 cd docker/pointing-user-interface
-DO_RELLOC=True docker-compose -f scene_[1,2,3,4]_[sim,real].yaml up
+DO_RELLOC=True docker-compose -f scenario_[1,2,3,4]_[sim,real].yaml up
 ```
 
 ### Interaction

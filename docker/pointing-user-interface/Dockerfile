@@ -17,7 +17,7 @@ SHELL ["/bin/bash", "-c"]
 RUN python3 -m pip install -U numpy pyyaml chime scipy transforms3d Shapely
 RUN mkdir -p /ros_ws/src/
 RUN git clone -b dashing-devel https://github.com/jeguzzi/teleop_tools.git
-COPY ./oneswarm-hri/ /ros_ws/src/
+COPY ./code/ /ros_ws/src/
 RUN cp -r /teleop_tools/. /ros_ws/src/
 RUN cd /ros_ws/src && git clone -b ros2 https://github.com/Gabry993/volaly_kinematics.git && git clone -b ros2 https://github.com/Gabry993/volaly_msgs.git
 RUN cd /ros_ws && \
