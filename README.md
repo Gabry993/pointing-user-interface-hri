@@ -162,7 +162,7 @@ In scenario 1 users, once localized, can point at a set of single LED lights and
 The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
 
 ### Simulation
-[Launch CoppeliaSim container](#--starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
+[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
@@ -171,9 +171,9 @@ docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#--interaction)
+Start the interaction by pressing the metawear button as explained [before](#interaction).
 ### Real World
-Launch all the drivers containers, as explained [here](#--starting-the-drivers).
+Launch all the drivers containers, as explained [here](#starting-the-drivers).
 
 Then, launch the relevant docker compose:
 ```
@@ -182,4 +182,4 @@ docker-compose -f scenario_1_real.yaml up
 # or, if you want to perform relloc
 DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#--interaction)
+Start the interaction by pressing the metawear button as explained [before](#interaction).
