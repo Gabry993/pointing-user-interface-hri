@@ -171,7 +171,7 @@ docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#interaction).
+Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
 ### Real World
 Launch all the drivers containers, as explained [here](#starting-the-drivers).
 
@@ -183,3 +183,98 @@ docker-compose -f scenario_1_real.yaml up
 DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
 ```
 Start the interaction by pressing the metawear button as explained [before](#interaction).
+
+## Scenario 2 - Pointing Cursor on LED Strips
+
+In scenario 2 users, once localized, can point along the LED strips to draw a pointing cursor.
+The color of this cursor be mapped to a specified colormap according to how close the pointing ray is to the strip.
+
+### Simulation
+[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_2.ttt` within the docker container.
+
+Then, launch the relevant docker compose:
+```
+cd docker/pointing-user-interface
+docker-compose -f scenario_2_sim.yaml up
+# or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
+DO_RELLOC=True docker-compose -f scenario_2_sim.yaml up
+```
+Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
+### Real World
+Launch all the drivers containers, as explained [here](#starting-the-drivers).
+
+Then, launch the relevant docker compose:
+```
+cd docker/pointing-user-interface
+docker-compose -f scenario_2_real.yaml up
+# or, if you want to perform relloc
+DO_RELLOC=True docker-compose -f scenario_2_real.yaml up
+```
+Start the interaction by pressing the metawear button as explained [before](#interaction).
+
+## Scenario 3 - Selecting Packages Simulated on LED Strips
+
+In scenario 3 users, once localized, can select moving packages simulated along the LED strips. Packages are represented in three colors, red, green and blu.
+
+To select a package, the pointing cursor must overlay it for 0.5s.
+
+Selected packages are marked by two white dots flanking them. In simulation, Bill's task is to select just the red packages.
+
+In this case, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
+
+### Simulation
+[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_3.ttt` within the docker container.
+
+Then, launch the relevant docker compose:
+```
+cd docker/pointing-user-interface
+docker-compose -f scenario_3_sim.yaml up
+# or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
+DO_RELLOC=True docker-compose -f scenario_3_sim.yaml up
+```
+Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
+### Real World
+Launch all the drivers containers, as explained [here](#starting-the-drivers).
+
+Then, launch the relevant docker compose:
+```
+cd docker/pointing-user-interface
+docker-compose -f scenario_3_real.yaml up
+# or, if you want to perform relloc
+DO_RELLOC=True docker-compose -f scenario_3_real.yaml up
+```
+Start the interaction by pressing the metawear button as explained [before](#interaction).
+
+## Scenario 4 - Selecting Packages On a Conveyor Belt
+In scenario 4 users, once localized, can select packages moving along a conveyor belt. Here, LED strips provide feedback only for the position and the selection of packages, not their nature/color. In fact, they are represented on the strips as blu. This happens because the system can track only the positionof the moving box, but does not know whether they are defected (i.e. red packages). User/Bill's task is to select all the red packages so that they can be dispatched in the first bay, while all unselected packages are diverted towards the 3rd one.
+
+Again, to select a package, the pointing cursor must overlay it for 0.5s.
+
+Selected packages are marked by two white dots flanking them.
+
+In this case, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
+
+### Simulation
+[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_4.ttt` within the docker container.
+
+Then, launch the relevant docker compose:
+```
+cd docker/pointing-user-interface
+docker-compose -f scenario_4_sim.yaml up
+# or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
+DO_RELLOC=True docker-compose -f scenario_4_sim.yaml up
+```
+Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
+### Real World
+Launch all the drivers containers, as explained [here](#starting-the-drivers).
+
+Then, launch the relevant docker compose:
+```
+cd docker/pointing-user-interface
+docker-compose -f scenario_4_real.yaml up
+# or, if you want to perform relloc
+DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
+```
+Start the interaction by pressing the metawear button as explained [before](#interaction).
+
+Note that this will launch only the PUI software, we don't have the driver for the conveyor belt system. In general, one would need to interface with it and get a list of all the packages and their position. We were able to test our system both in VR, with the simulated conveyor, and in the real world. For the latter case, we were manually adding packages on the conveyor and in our system: knowing the belt speeds, we were able to estimate their position and run the interaction.
