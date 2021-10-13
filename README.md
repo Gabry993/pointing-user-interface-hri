@@ -340,7 +340,3 @@ Note that this will launch only the PUI software, we don't include the software 
 
 
 
-
-
-https://user-images.githubusercontent.com/20441485/137182141-58fb2eef-0d3f-41a2-a229-9be4fabd2d6b.mp4
-
