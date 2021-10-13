@@ -5,7 +5,7 @@ services:
     network_mode: host
     pid: host
     privileged: true
-    command: ros2 launch relloc docker_hri.launch single_LED:=True map_path:="/ros_ws/src/coppelia_scenes/tutorial_scenario_1_2_3.yaml" do_relloc:=${DO_RELLOC:-False} user_kinematics:="bill" sim_imu:=True rotation_topic:="imu" user_name:="user1" pointer_cmap:="viridis"
+    command: ros2 launch relloc docker_hri.launch single_LED:=True map_path:="/ros_ws/src/coppelia_scenes/tutorial_scenario_1_2_3.yaml" do_relloc:=${DO_RELLOC:-False} user_kinematics:="bill" sim_imu:=True rotation_topic:="imu" user_name:="user1" pointer_cmap:="viridis_r"
     volumes:
       - ./logs:/root/.ros/log:rw
       - ./profile.xml:/profile.xml
