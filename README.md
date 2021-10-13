@@ -140,6 +140,8 @@ DO_RELLOC=True docker-compose -f scenario_<number>_<sim or real>.yaml up
 In scenario 1 users, once localized, can point at a set of single LED lights and change their color.
 The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
 
+https://user-images.githubusercontent.com/20441485/137185141-39ade0af-036c-4946-8300-4e3d2a1bc629.mp4
+
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
 ```
@@ -187,6 +189,8 @@ Start the interaction by pressing the metawear button.
 
 In scenario 2 users, once localized, can point along the LED strips to draw a pointing cursor.
 The color of this cursor is mapped to a specified colormap according to how close the pointing ray is to the strip.
+
+https://user-images.githubusercontent.com/20441485/137185191-9ba57f91-6bfa-4371-9dd5-7a91fe7e224e.mp4
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
@@ -241,6 +245,8 @@ Selected packages are marked by two white dots flanking them. In simulation, Bil
 
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
+https://user-images.githubusercontent.com/20441485/137185231-2e5d1b07-30a7-406f-b9ba-ec11faeee694.mp4
+
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
 ```
@@ -293,6 +299,8 @@ Selected packages are marked by two white dots flanking them.
 
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
+https://user-images.githubusercontent.com/20441485/137185288-9ddda374-d6a2-4dd6-8b13-e4abad097bb8.mp4
+
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
 ```
@@ -337,3 +345,6 @@ sudo DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
 Start the interaction by pressing the metawear button.
 
 Note that this will launch only the PUI software, we don't include the software to control the conveyor belt system. In general, one would need to interface with it and get a list of all the packages and their positions. We were able to test our system both in VR, with the simulated conveyor, and in the real world. For the latter case, we were manually adding packages on the conveyor and in our system at the same time: knowing the belt speeds, we were able to estimate their positions and run the interaction.
+
+
+
