@@ -187,7 +187,7 @@ Start the interaction by pressing the metawear button as explained [before](#int
 ## Scenario 2 - Pointing Cursor on LED Strips
 
 In scenario 2 users, once localized, can point along the LED strips to draw a pointing cursor.
-The color of this cursor be mapped to a specified colormap according to how close the pointing ray is to the strip.
+The color of this cursor is mapped to a specified colormap according to how close the pointing ray is to the strip.
 
 ### Simulation
 [Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_2.ttt` within the docker container.
