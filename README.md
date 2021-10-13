@@ -308,6 +308,8 @@ In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colorma
 
 https://user-images.githubusercontent.com/20441485/137200823-8863138e-f8d9-4a42-bd31-0968af00a77c.mp4
 
+https://user-images.githubusercontent.com/20441485/137204163-ab0c994c-9c5b-4550-ab1c-a76aeaf3d27f.mp4
+
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
 ```
@@ -351,7 +353,7 @@ sudo DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
 ```
 Start the interaction by pressing the metawear button.
 
-Note that this will launch only the PUI software, we don't include the software to control the conveyor belt system. In general, one would need to interface with it and get a list of all the packages and their positions. We were able to test our system both in VR, with the simulated conveyor, and in the real world. For the latter case, we were manually adding packages on the conveyor and in our system at the same time: knowing the belt speeds, we were able to estimate their positions and run the interaction.
+Note that this will launch only the PUI software, we don't include the software to control the conveyor belt system. In general, one would need to interface with it and get a list of all the packages and their positions. We were able to test our system both in VR, with the simulated conveyor, and in the real world. For the latter case, as seen in the video, we were manually adding packages on the conveyor and in our system at the same time: knowing the belt speeds, we were able to estimate their positions and run the interaction.
 
 
 
