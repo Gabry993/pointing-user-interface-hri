@@ -162,7 +162,7 @@ In scenario 1 users, once localized, can point at a set of single LED lights and
 The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
+[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_1.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
@@ -190,7 +190,7 @@ In scenario 2 users, once localized, can point along the LED strips to draw a po
 The color of this cursor is mapped to a specified colormap according to how close the pointing ray is to the strip.
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_2.ttt` within the docker container.
+[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_2.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
@@ -223,7 +223,7 @@ Selected packages are marked by two white dots flanking them. In simulation, Bil
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_3.ttt` within the docker container.
+[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_3.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
@@ -255,7 +255,7 @@ Selected packages are marked by two white dots flanking them.
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_4.ttt` within the docker container.
+[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_4.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
