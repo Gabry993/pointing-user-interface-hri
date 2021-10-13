@@ -140,7 +140,7 @@ DO_RELLOC=True docker-compose -f scenario_<number>_<sim or real>.yaml up
 In scenario 1 users, once localized, can point at a set of single LED lights and change their color.
 The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
 
-https://user-images.githubusercontent.com/20441485/137185141-39ade0af-036c-4946-8300-4e3d2a1bc629.mp4
+https://user-images.githubusercontent.com/20441485/137200706-6fdad541-4d59-4754-bc43-37ededdaed59.mp4
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
@@ -190,7 +190,7 @@ Start the interaction by pressing the metawear button.
 In scenario 2 users, once localized, can point along the LED strips to draw a pointing cursor.
 The color of this cursor is mapped to a specified colormap according to how close the pointing ray is to the strip.
 
-https://user-images.githubusercontent.com/20441485/137185191-9ba57f91-6bfa-4371-9dd5-7a91fe7e224e.mp4
+https://user-images.githubusercontent.com/20441485/137200744-6cb86653-8739-4409-b3b7-d3ff7164ba19.mp4
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
@@ -245,7 +245,7 @@ Selected packages are marked by two white dots flanking them. In simulation, Bil
 
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
-https://user-images.githubusercontent.com/20441485/137185231-2e5d1b07-30a7-406f-b9ba-ec11faeee694.mp4
+https://user-images.githubusercontent.com/20441485/137200779-e93a369a-5ceb-49b1-b688-559b469d90a8.mp4
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
@@ -299,7 +299,7 @@ Selected packages are marked by two white dots flanking them.
 
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
-https://user-images.githubusercontent.com/20441485/137185288-9ddda374-d6a2-4dd6-8b13-e4abad097bb8.mp4
+https://user-images.githubusercontent.com/20441485/137200823-8863138e-f8d9-4a42-bd31-0968af00a77c.mp4
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
