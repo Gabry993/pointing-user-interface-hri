@@ -146,27 +146,30 @@ First, launch CoppeliaSim container, if it is not running already:
 cd REPO_ROOT_FOLDER
 cd docker/simulation
 xhost +local:root # otherwise the GUI won't work
-docker-compose up
+sudo docker-compose up
 ```
 Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_1.ttt`.
+
 If you want to run the relative localization, do [this](#enabling-relloc).
-Then, press the `Play`  ![play button img](img/play.png "play button icon") button in CoppeliaSim to start the scene. 
+
+Then, press the `play` button (![play button img](img/play.png "play button icon")) in CoppeliaSim to start the scene. 
+
 After this, start the PUI nodes:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_1_sim.yaml up
+sudo docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
-Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction)
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
 
 ### Real World
 First, launch all the drivers for the real world scenarios:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/real_world
-USER_NAME=human docker-compose up
+sudo USER_NAME=human docker-compose up
 ```
 The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
@@ -174,83 +177,11 @@ Then, launch the relevant docker compose:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_1_real.yaml up
+sudo docker-compose -f scenario_1_real.yaml up
 # or, if you want to perform relloc
-DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
 ```
 Start the interaction by pressing the metawear button.
-
-
-
-
-
-
-
-
-
-
-### Starting the Simulation
-Just for the simulation
-```
-# first, launch CoppeliaSim
-cd docker/simulation
-xhost +local:root # otherwise the GUI won't work
-docker-compose up
-# open the relevant scene in coppelia and start it
-```
-### Starting the Scenario
-On another terminal (both for simulation and real world),
-```
-cd docker/pointing-user-interface
-docker-compose -f scenario_[1,2,3,4]_[sim,real].yaml up
-```
-### Starting the Drivers
-To launch all the drivers for the real world scenarios:
-```
-cd docker/real_world
-USER_NAME=human docker-compose up
-```
-The `USER_NAME` variable is needed to define the user namespace. It is strictly needed only the case of multi-user scenarios.
-
-### Enabling Relloc
-By default, all scenarios will run without relative localization. To change this behaviour, open the demo GUI in CoppeliaSim by clicking the icon marked in the image and check _Bill should perform  localization procedure_.
-
-![picture alt](img/demo_gui.png "demo GUI icon") 
-
-If this option is checked, after triggering the interaction, Bill will perform the relative localization first.
-Also, when launching the `pointing-user-interface` container, set the environment variable `DO_RELLOC=True`, like this:
- ```
-cd docker/pointing-user-interface
-DO_RELLOC=True docker-compose -f scenario_[1,2,3,4]_[sim,real].yaml up
-```
-
-## Scenario 1 - Single LEDs
-
-In scenario 1 users, once localized, can point at a set of single LED lights and change their color.
-The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
-
-### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_1.ttt` within the docker container.
-
-Then, launch the relevant docker compose:
-```
-cd docker/pointing-user-interface
-docker-compose -f scenario_1_sim.yaml up
-# or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
-```
-Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
-### Real World
-Launch all the drivers containers, as explained [here](#starting-the-drivers).
-
-Then, launch the relevant docker compose:
-```
-cd docker/pointing-user-interface
-docker-compose -f scenario_1_real.yaml up
-# or, if you want to perform relloc
-DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
-```
-Start the interaction by pressing the metawear button as explained [before](#interaction).
 
 ## Scenario 2 - Pointing Cursor on LED Strips
 
@@ -258,27 +189,47 @@ In scenario 2 users, once localized, can point along the LED strips to draw a po
 The color of this cursor is mapped to a specified colormap according to how close the pointing ray is to the strip.
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_2.ttt` within the docker container.
-
-Then, launch the relevant docker compose:
+First, launch CoppeliaSim container, if it is not running already:
 ```
+cd REPO_ROOT_FOLDER
+cd docker/simulation
+xhost +local:root # otherwise the GUI won't work
+sudo docker-compose up
+```
+Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_2.ttt`.
+
+If you want to run the relative localization, do [this](#enabling-relloc).
+
+Then, press the `play` button (![play button img](img/play.png "play button icon")) in CoppeliaSim to start the scene. 
+
+After this, start the PUI nodes:
+```
+cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_2_sim.yaml up
+sudo docker-compose -f scenario_2_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-DO_RELLOC=True docker-compose -f scenario_2_sim.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_2_sim.yaml up
 ```
-Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+
 ### Real World
-Launch all the drivers containers, as explained [here](#starting-the-drivers).
+First, launch all the drivers for the real world scenarios:
+```
+cd REPO_ROOT_FOLDER
+cd docker/real_world
+sudo USER_NAME=human docker-compose up
+```
+The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
 Then, launch the relevant docker compose:
 ```
+cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_2_real.yaml up
+sudo docker-compose -f scenario_2_real.yaml up
 # or, if you want to perform relloc
-DO_RELLOC=True docker-compose -f scenario_2_real.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_2_real.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#interaction).
+Start the interaction by pressing the metawear button.
 
 ## Scenario 3 - Selecting Packages Simulated on LED Strips
 
@@ -291,27 +242,47 @@ Selected packages are marked by two white dots flanking them. In simulation, Bil
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_3.ttt` within the docker container.
-
-Then, launch the relevant docker compose:
+First, launch CoppeliaSim container, if it is not running already:
 ```
+cd REPO_ROOT_FOLDER
+cd docker/simulation
+xhost +local:root # otherwise the GUI won't work
+sudo docker-compose up
+```
+Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_3.ttt`.
+
+If you want to run the relative localization, do [this](#enabling-relloc).
+
+Then, press the `play` button (![play button img](img/play.png "play button icon")) in CoppeliaSim to start the scene. 
+
+After this, start the PUI nodes:
+```
+cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_3_sim.yaml up
+sudo docker-compose -f scenario_3_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-DO_RELLOC=True docker-compose -f scenario_3_sim.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_3_sim.yaml up
 ```
-Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+
 ### Real World
-Launch all the drivers containers, as explained [here](#starting-the-drivers).
+First, launch all the drivers for the real world scenarios:
+```
+cd REPO_ROOT_FOLDER
+cd docker/real_world
+sudo USER_NAME=human docker-compose up
+```
+The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
 Then, launch the relevant docker compose:
 ```
+cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_3_real.yaml up
+sudo docker-compose -f scenario_3_real.yaml up
 # or, if you want to perform relloc
-DO_RELLOC=True docker-compose -f scenario_3_real.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_3_real.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#interaction).
+Start the interaction by pressing the metawear button.
 
 ## Scenario 4 - Selecting Packages On a Conveyor Belt
 In scenario 4 users, once localized, can select packages moving along a conveyor belt. Here, LED strips provide feedback only for the position and the selection of packages, not their nature/color. In fact, they are all represented on the strips as blue. This happens because the system can track only the position of the moving boxes, but does not know whether they are defected (i.e. red packages). User/Bill's task is to select all the red packages so that they can be dispatched in the first bay, while all unselected packages are diverted towards the 3rd one.
@@ -323,26 +294,46 @@ Selected packages are marked by two white dots flanking them.
 In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colormap by default)
 
 ### Simulation
-[Launch CoppeliaSim container](#starting-the-simulation) if it is not running already. The scene to open from the menu can be found at `/ros_ws/src/coppelia_scenes/tutorial_scenario_4.ttt` within the docker container.
-
-Then, launch the relevant docker compose:
+First, launch CoppeliaSim container, if it is not running already:
 ```
+cd REPO_ROOT_FOLDER
+cd docker/simulation
+xhost +local:root # otherwise the GUI won't work
+sudo docker-compose up
+```
+Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_4.ttt`.
+
+If you want to run the relative localization, do [this](#enabling-relloc).
+
+Then, press the `play` button (![play button img](img/play.png "play button icon")) in CoppeliaSim to start the scene. 
+
+After this, start the PUI nodes:
+```
+cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_4_sim.yaml up
+sudo docker-compose -f scenario_4_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-DO_RELLOC=True docker-compose -f scenario_4_sim.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_4_sim.yaml up
 ```
-Start the interaction by pressing the virtual-metawear button as explained [before](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+
 ### Real World
-Launch all the drivers containers, as explained [here](#starting-the-drivers).
+First, launch all the drivers for the real world scenarios:
+```
+cd REPO_ROOT_FOLDER
+cd docker/real_world
+sudo USER_NAME=human docker-compose up
+```
+The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
 Then, launch the relevant docker compose:
 ```
+cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-docker-compose -f scenario_4_real.yaml up
+sudo docker-compose -f scenario_4_real.yaml up
 # or, if you want to perform relloc
-DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
+sudo DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#interaction).
+Start the interaction by pressing the metawear button.
 
 Note that this will launch only the PUI software, we don't include the software to control the conveyor belt system. In general, one would need to interface with it and get a list of all the packages and their positions. We were able to test our system both in VR, with the simulated conveyor, and in the real world. For the latter case, we were manually adding packages on the conveyor and in our system at the same time: knowing the belt speeds, we were able to estimate their positions and run the interaction.
