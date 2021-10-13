@@ -101,11 +101,11 @@ strips:
 
 # Scenarios
 We have four different scenarios, which can be launched both in simulation and real world, 
-using the same launch file. So, for each scenario we will provide a brief description, then we will point
-the relevant CoppeliaSim scene, environment map and launch parameters. In general, the workflow to
-launch a scenario will be:
+using the same [launch file](docker/pointing-user-interface/code/relloc/launch/docker_hri.launch). So, for each scenario we will provide a brief description, then we will point
+the relevant CoppeliaSim scene, environment map and launch parameters. In general, the workflow to launch a scenario will be:
 
-(just for simulation)
+### Starting the Simulation
+Just for the simulation
 ```
 # first, launch CoppeliaSim
 cd docker/simulation
@@ -113,30 +113,22 @@ xhost +local:root # otherwise the GUI won't work
 docker-compose up
 # open the relevant scene in coppelia and start it
 ```
+### Starting the Scenario
 On another terminal (both for simulation and real world),
 ```
 cd docker/pointing-user-interface
 docker-compose -f scene_[1,2,3,4]_[sim,real].yaml up
 ```
+### Starting the Drivers
 To launch all the drivers for the real world scenarios:
 ```
 cd docker/real_world
 USER_NAME=human docker-compose up
 ```
-  The `USER_NAME` variable is needed to define the user namespace. It is strictly needed only the case of multi-user scenarios.
+The `USER_NAME` variable is needed to define the user namespace. It is strictly needed only the case of multi-user scenarios.
 
-To trigger the interaction, in real world we press the button on our IMU, in simulation we
-open Bill's GUI (after starting the simulation) and then click _Push metawear button_.
-Here you can see the icon needed to open Bill's GUI.
-
-![picture alt](img/bill_gui.png "demo GUI icon") 
-
-As an alternative, both in simulation and real world, one can press _n_ button on the keyboard to
-go on with the interaction, but this will work only in a single user scenario.
-
-By default, all scenarios will run without relative localization. To change this behaviour, open
-the demo GUI in CoppeliaSim by clicking the icon marked in the image and check _Bill should perform 
-localization procedure_.
+### Enabling Relloc
+By default, all scenarios will run without relative localization. To change this behaviour, open the demo GUI in CoppeliaSim by clicking the icon marked in the image and check _Bill should perform  localization procedure_.
 
 ![picture alt](img/demo_gui.png "demo GUI icon") 
 
@@ -146,6 +138,14 @@ Also, when launching the `pointing-user-interface` container, set the environmen
 cd docker/pointing-user-interface
 DO_RELLOC=True docker-compose -f scene_[1,2,3,4]_[sim,real].yaml up
 ```
+
+### Interaction
+To start and then trigger each step of the interaction, in real world we press the button on our IMU each time. In simulation, we do the same by opening Bill's GUI (after starting the simulation) and then clicking _Push metawear button_.
+Here you can see the icon needed to open Bill's GUI.
+
+![picture alt](img/bill_gui.png "demo GUI icon") 
+
+As an alternative, both in simulation and real world, one can press _n_ button on the keyboard to go on with the interaction, but this will work only in a single user scenario.
 
 In general, those are the steps for each scenario:
 1. Idle.
@@ -162,7 +162,7 @@ In scenario 1 users, once localized, can point at a set of single LED lights and
 The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
 
 ### Simulation
-[Launch CoppeliaSim container](#scenarios). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
+[Launch CoppeliaSim container](#--starting-the-simulation). The scene to open from the menu can be found at `/ros_ws/src/oneswarm-hri-scenes/tutorial_scenario_1.ttt` within the docker container.
 
 Then, launch the relevant docker compose:
 ```
@@ -171,17 +171,15 @@ docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#scenarios)
+Start the interaction by pressing the metawear button as explained [before](#--interaction)
 ### Real World
-Launch all the drivers containers, then edit `docker/oneswarm_hri/docker-compose.yml` command (line 8):
-```
-command: ros2 launch relloc docker_hri.launch single_LED:=True map_path:="/ros_ws/src/oneswarm_hri_scenes/tutorial_scenario_1.yaml" do_relloc:=False user_kinematics:="human" sim_imu:=False rotation_topic:="metawear_ros/rotation" user_name:="human" pointer_cmap:="viridis"
-```
-Change in `do_relloc:=True` to perform relative localization.
+Launch all the drivers containers, as explained [here](#--starting-the-drivers).
 
-Then, launch the container:
+Then, launch the relevant docker compose:
 ```
-cd docker/oneswarm_hri
-docker-compose up
+cd docker/pointing-user-interface
+docker-compose -f scenario_1_real.yaml up
+# or, if you want to perform relloc
+DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
 ```
-Start the interaction by pressing the metawear button as explained [before](#scenarios)
+Start the interaction by pressing the metawear button as explained [before](#--interaction)
