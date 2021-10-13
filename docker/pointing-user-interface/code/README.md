@@ -11,22 +11,22 @@ This repository contains various code and tools used to develop a generic pointi
 
 ## Using the PUI
 The PUI works as it follows:
-- each user has a set of dedicated node, under a specified namespace. Those can be launched all together using [user.launch](relloc/launch/user.launch). [Here](#user.launch) the available parameters are documented in details.
-- each user, once localized, can subscribe to the globally available `pui_node`. This node is launched through [scenario_1_2_3_4.launch](relloc/launch/scenario_1_2_3_4.launch). Available parameters are described [here](TODO LINK).
+- each user has a set of dedicated node, under a specified namespace. Those can be launched all together using [user.launch](relloc/launch/user.launch). Available parameters are documented in detail [here](#userlaunch).
+- each user, once localized, can subscribe to the globally available `pui_node`. This node is launched through [scenario_1_2_3_4.launch](relloc/launch/scenario_1_2_3_4.launch). Available parameters are described [here](#scenario_1_2_3_4launch).
 - the `pui_node` waits for users to subscribe. Once it receives a subscription request, it starts receiving all the needed inputs (user's location and pointing rays) and, thanks to the environment map, can provide pointing cursors positions.
-- other nodes are used to implement our scenarios (e.g. simulating packages, feeders, checking for package selection, etc.). Those can be seen from [lab.launch](code/conveyor_utils/launch/lab.launch), for scenarios simulating packages on LED strips, and from [belt.launch](code/conveyor_utils/launch/belt.launch) for the scenario with the actual conveyor belt.
+- other nodes are used to implement our scenarios (e.g. simulating packages, feeders, checking for package selection, etc.). Those can be seen from [lab.launch](conveyor_utils/launch/lab.launch), for scenarios simulating packages on LED strips, and from [belt.launch](conveyor_utils/launch/belt.launch) for the scenario with the actual conveyor belt.
 
 Note that for convenience, [docker_hri.launch](relloc/launch/docker_hri.launch) can be used to run both the global nodes and a set of nodes for one user. This was done to easily deploy demos from the docker containers.
 
 ### scenario_1_2_3_4.launch
-This [launch file](TODO LINK) will launch the nodes needed for the PUI and for the interaction with the systems.
+This [launch file](relloc/launch/scenario_1_2_3_4.launc) will launch the nodes needed for the PUI and for the interaction with the systems.
 For the PUI it will launch, based on `single_LED` parameters, one between:
 - `pui_node`: standard PUI node.
 - `single_pui_node`: PUI node which compute the intersection between pointing rays and single LED lights.
 
 For the LED/conveyor system, it will call based on `sim_packages_on_LED` parameters, one between:
-- `lab.launch`: available [here](TODO LINK). This will launch the nodes to draw packages and pointing cursor on LED strips. It will also instantiate the nodes which simulate creating and feeding packages.
-- `belt.launch`: available [here](TODO LINK). This will launch just the nodes to draw packages position and cursor on LED strip, since it is used the actual conveyor belt.
+- `lab.launch`: available [here](conveyor_utils/launch/lab.launch). This will launch the nodes to draw packages and pointing cursor on LED strips. It will also instantiate the nodes which simulate creating and feeding packages.
+- `belt.launch`: available [here](conveyor_utils/launch/belt.launch). This will launch just the nodes to draw packages position and cursor on LED strip, since it is used the actual conveyor belt.
 
 These are the parameters available for this launch file:
 | parameter             | type   | valid values | default                          | description                                                                                                                                  |
@@ -40,7 +40,7 @@ These are the parameters available for this launch file:
 | `feed`                | bool   | `True`, `False`  | `False`                            | Whether the package feeder (for packages simulated on LEDs) is active from the start or not                                                  |
 
 ### user.launch
-This [launch file](TODO LINK HERE) will starts all the node needed to add a user interacting with the system. All those nodes will be running under the provided `user_name` namespace. This will launch:
+This [launch file](relloc/launch/user.launch) will starts all the node needed to add a user interacting with the system. All those nodes will be running under the provided `user_name` namespace. This will launch:
 - `human_kinematics.launch`: this starts the nodes deploying the pointing model and publishing the pointing rays for the user.
 - `pointing_demo`: this is the node coordinating the state of our scenarios interactions between nodes
 - `relloc_exec`: node that actually performs the relative localization. It runs only if `do_relloc` parameter is set to `True`.
