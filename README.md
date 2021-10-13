@@ -29,16 +29,16 @@ Here is a list of the hardware used in our real world scenarios, in case one wan
 ### IMU
 We use [mbientlab MetaMotionR](https://mbientlab.com/metamotionr/), an IMU sensor bluetooth with bluetooth connection. The MAC address of the device should be changed in the file [docker/real_world/_main.launch](docker/real_world/_main.launch) to match the one in use.
 ### LED Strips
-For those, we us an [ElectroMage Pro](https://www.bhencke.com/serial-led-driver-pro) board. Each LED strips must be connected to it (each plug corresponds to a channel which must be consistent with the LED map). The board must be connected via UART to a PC running our docker container. The correct device must be specified in the docker-compose file.
+For the LED strips used to provide feedback for pointing and packages state, we use an [ElectroMage Pro](https://www.bhencke.com/serial-led-driver-pro) board. Each LED strips must be connected to it (each plug corresponds to a channel which must be consistent with the [LED map](#2---environment-and-objects-map)). The board must be connected via UART to a PC running our docker container. The correct device must be specified in the [docker-compose file](docker/real_world/docker-compose.yml#L28).
 ### Single LEDs
-For those, we use [FeatherS2](https://feathers2.io/) boards flashed with TODO.
-Then, they should connect to the same network running our docker container.
+For those, we use [FeatherS2](https://feathers2.io/) boards. TODO flashed with our sw?
+They should connect to the same network of the machine running our docker container.
 ### Drivers
 To replicate our hardware setup, we provide containers for `metawear_ros`, `single_LEDs`
 and `LED_strips` ROS2 drivers. Of course those could be replaced with different hardware, but is important that they expose the same information or interface. In particular:
-* `metawear` can be replaced with any IMU providing a continuous stream of `geometry_msgs/msg/QuaternionStamped` messages (see [PUI interface](#2---users-pointing-rays))
+* `metawear_ros` can be replaced with any IMU providing a continuous stream of `geometry_msgs/msg/QuaternionStamped` messages (see [PUI interface](#2---users-pointing-rays))
 * `single_LED` controller must expose a topic named `/led_number/color` of type `std_msgs/msg/ColorRGBA`
-* `LED_strips` controller must expose a topic named `/led_strips` of type `led_strips_msgs/msg/LedStrips` (check the [source code](docker/pointing-user-interface/code/led_strip_msgs/msg/LedStrips.msg) for details)
+* `LED_strips` controller must expose a topic named `/led_strips` of type `led_strips_msgs/msg/LedStrips` (check the [source code](docker/pointing-user-interface/code/led_strip_msgs/msg/LedStrips.msg) for details of the custom ROS messages involved)
  
 # PUI Interface
 Our PUI interface has 3 inputs:
