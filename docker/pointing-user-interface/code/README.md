@@ -11,7 +11,7 @@ This repository contains various code and tools used to develop a generic pointi
 
 ## Using the PUI
 The PUI works as it follows:
-- each user has a set of dedicated node, under a specified namespace. Those can be launched all together using [user.launch](relloc/launch/user.launch). [Here](TODO LINK) the available parameters are documented in details.
+- each user has a set of dedicated node, under a specified namespace. Those can be launched all together using [user.launch](relloc/launch/user.launch). [Here](#user.launch) the available parameters are documented in details.
 - each user, once localized, can subscribe to the globally available `pui_node`. This node is launched through [scenario_1_2_3_4.launch](relloc/launch/scenario_1_2_3_4.launch). Available parameters are described [here](TODO LINK).
 - the `pui_node` waits for users to subscribe. Once it receives a subscription request, it starts receiving all the needed inputs (user's location and pointing rays) and, thanks to the environment map, can provide pointing cursors positions.
 - other nodes are used to implement our scenarios (e.g. simulating packages, feeders, checking for package selection, etc.). Those can be seen from [lab.launch](code/conveyor_utils/launch/lab.launch), for scenarios simulating packages on LED strips, and from [belt.launch](code/conveyor_utils/launch/belt.launch) for the scenario with the actual conveyor belt.
