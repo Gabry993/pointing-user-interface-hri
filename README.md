@@ -29,7 +29,7 @@ Here is a list of the hardware used in our real world scenarios, in case one wan
 ### IMU
 We use [mbientlab MetaMotionR](https://mbientlab.com/metamotionr/), an IMU sensor bluetooth with bluetooth connection. The MAC address of the device should be changed in the file [docker/real_world/_main.launch](docker/real_world/_main.launch) to match the one in use.
 ### LED Strips
-For the LED strips used to provide feedback for pointing and packages state, we use an [ElectroMage Pro](https://www.bhencke.com/serial-led-driver-pro) board. Each LED strips must be connected to it (each plug corresponds to a channel which must be consistent with the [LED map](#2---environment-and-objects-map)). The board must be connected via UART to a PC running our docker container. The correct device must be specified in the [docker-compose file](docker/real_world/docker-compose.yml#L28).
+For the LED strips used to provide feedback for pointing and packages state, we use an [ElectroMage Pro](https://www.bhencke.com/serial-led-driver-pro) board. Each LED strips must be connected to it (each plug corresponds to a channel which must be consistent with the [LED map](#3---environment-and-objects-maps)). The board must be connected via UART to a PC running our docker container. The correct device must be specified in the [docker-compose file](docker/real_world/docker-compose.yml#L28).
 ### Single LEDs
 For those, we use [FeatherS2](https://feathers2.io/) boards. TODO flashed with our sw?
 They should connect to the same network of the machine running our docker container.
