@@ -71,10 +71,12 @@ and passing through their index fingertip.
 Note that user biometry may be updated to obtain a more accurate pointing reconstruction. To do so,
 edit the [human_kinematics.yaml](docker/pointing-user-interface/human_kinematics.yaml) file accordingly in `docker/pointing-user-interface/`.
 
-## 3 - Environment and Object Maps
+## 3 - Environment and Objects Maps
 The environment map is used to intersect pointing rays with the system. In that way we can understand if the user is pointing at a given object within the environment and also provide a feedback cursor, so that they know where the system thinks they are pointing.
 
 In our examples, objects to select are packages (or packages simulated on LED strips), moving on conveyor belts. So we need maps of those belts and LED strips, while we keep publishing the updated position of the packages.
+
+The map gives us also the known position of the single LEDs used for the relative localization.
 
 This is the format of our maps.
 If there are no belts but strips, it is implicitly assumed that belts are emulated on the strips, i.e., for every strip there is a belt with the same geometry, named `strip_<uid>`.
