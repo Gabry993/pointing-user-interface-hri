@@ -23,7 +23,7 @@ Note that those containers were tested on Ubuntu 20.04. They should work out of 
 OS, except for `simulation` one, which may need to be adapted to work with the GUI.
 
 ## Source Code
-The source code can be found in [docker/pointing-user-interface/code](docker/pointing-user-interface/code/)
+The source code can be found in [docker/pointing-user-interface/code](docker/pointing-user-interface/code/) along with the documentation to launch the ROS2 nodes for the PUI directly.
 ## Hardware
 Here is a list of the hardware used in our real world scenarios, in case one wants to replicate them.
 ### IMU
