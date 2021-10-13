@@ -20,7 +20,7 @@ Dockerfiles provides a convenient list of steps to rebuild the environment manua
    docker-compose pull
    ```
 Note that those containers were tested on Ubuntu 20.04. They should work out of the box with other
-OS, except for `simulation` one, which may be adapted to work with the GUI.
+OS, except for `simulation` one, which may need to be adapted to work with the GUI.
 
 ## Source Code
 The source code can be found in [docker/pointing-user-interface/code](docker/pointing-user-interface/code/)
