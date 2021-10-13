@@ -1,4 +1,5 @@
 
+
 ### How to deploy our Pointing User Interface (PUI)
 This readme explains how to run our PUI in different scenarios, both simulated and real.
 For the simulated scenarios, we provide CoppeliaSim scenes and instruction to run them. For real
@@ -103,7 +104,90 @@ strips:
 # Usage in Different Scenarios
 We have four different scenarios, which can be launched both in simulation and real world, 
 using the same [launch file](docker/pointing-user-interface/code/relloc/launch/docker_hri.launch). So, for each scenario we will provide a brief description, then we will point
-the relevant CoppeliaSim scene, environment map and launch parameters. In general, the workflow to launch a scenario will be:
+the relevant CoppeliaSim scene, environment map and launch parameters. 
+
+### General Interaction
+In general, those are the steps for each scenario:
+1. Idle.
+2. Press button. Triggers relloc (if enabled) or set the localization (if fixed)
+3. Localization is computed/fixed
+4. User is attached to PUI (e.g. the cursor is drawn on led strips, packages can be selected, etc.)
+5. Press button.
+6. User is detached from PUI, go back to 1.
+
+### Pressing Buttons
+To start and then trigger each step of the interaction, in real world we press the button on our IMU each time. In simulation, we do the same by opening Bill's GUI (after starting the simulation) and then clicking _Push metawear button_.
+Here you can see the icon needed to open Bill's GUI.
+
+![picture alt](img/bill_gui.png "demo GUI icon") 
+
+If you can not see the _Push metawear button_ button, it means that the scene is not playing: remember to start it before, by pressing the play button ![play button img](img/play.png "play button icon") , then open Bill's GUI again.
+As an alternative, both in simulation and real world, one can press _n_ button on the keyboard to go on with the interaction, but this will work only in a single user scenario.
+
+### Enabling Relloc
+By default, all scenarios will run without relative localization. To change this behavior, open the demo GUI in CoppeliaSim by clicking the icon marked in the image and check _Bill should perform  localization procedure_ (do this before starting the scene).
+
+![picture alt](img/demo_gui.png "demo GUI icon") 
+
+If this option is checked, after triggering the interaction, Bill will perform the relative localization first.
+Also, when launching the `pointing-user-interface` container, set the environment variable `DO_RELLOC=True`, like this:
+ ```
+DO_RELLOC=True docker-compose -f scenario_<number>_<sim or real>.yaml up
+```
+
+## Scenario 1 - Single LEDs
+
+In scenario 1 users, once localized, can point at a set of single LED lights and change their color.
+The color will be mapped to a specified colormap according to how close the pointing ray is to the light.
+
+### Simulation
+First, launch CoppeliaSim container, if it is not running already:
+```
+cd REPO_ROOT_FOLDER
+cd docker/simulation
+xhost +local:root # otherwise the GUI won't work
+docker-compose up
+```
+Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_1.ttt`.
+If you want to run the relative localization, do [this](#enabling-relloc).
+Then, press the `Play`  ![play button img](img/play.png "play button icon") button in CoppeliaSim to start the scene. 
+After this, start the PUI nodes:
+```
+cd REPO_ROOT_FOLDER
+cd docker/pointing-user-interface
+docker-compose -f scenario_1_sim.yaml up
+# or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
+DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
+```
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction)
+
+### Real World
+First, launch all the drivers for the real world scenarios:
+```
+cd REPO_ROOT_FOLDER
+cd docker/real_world
+USER_NAME=human docker-compose up
+```
+The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
+
+Then, launch the relevant docker compose:
+```
+cd REPO_ROOT_FOLDER
+cd docker/pointing-user-interface
+docker-compose -f scenario_1_real.yaml up
+# or, if you want to perform relloc
+DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
+```
+Start the interaction by pressing the metawear button.
+
+
+
+
+
+
+
+
+
 
 ### Starting the Simulation
 Just for the simulation
@@ -139,23 +223,6 @@ Also, when launching the `pointing-user-interface` container, set the environmen
 cd docker/pointing-user-interface
 DO_RELLOC=True docker-compose -f scenario_[1,2,3,4]_[sim,real].yaml up
 ```
-
-### Interaction
-To start and then trigger each step of the interaction, in real world we press the button on our IMU each time. In simulation, we do the same by opening Bill's GUI (after starting the simulation) and then clicking _Push metawear button_.
-Here you can see the icon needed to open Bill's GUI.
-
-![picture alt](img/bill_gui.png "demo GUI icon") 
-
-As an alternative, both in simulation and real world, one can press _n_ button on the keyboard to go on with the interaction, but this will work only in a single user scenario.
-
-In general, those are the steps for each scenario:
-1. Idle.
-2. Press button. Triggers relloc (if enabled) or set the localization (if fixed)
-3. Localization is computed/fixed
-4. User is attached to PUI (e.g. the cursor is drawn on led strips, packages can be selected, etc.)
-5. Press button.
-6. User is detached from PUI, go back to 1.
-
 
 ## Scenario 1 - Single LEDs
 
