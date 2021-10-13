@@ -339,5 +339,8 @@ Start the interaction by pressing the metawear button.
 Note that this will launch only the PUI software, we don't include the software to control the conveyor belt system. In general, one would need to interface with it and get a list of all the packages and their positions. We were able to test our system both in VR, with the simulated conveyor, and in the real world. For the latter case, we were manually adding packages on the conveyor and in our system at the same time: knowing the belt speeds, we were able to estimate their positions and run the interaction.
 
 
-https://user-images.githubusercontent.com/20441485/137181909-9e1dcd21-1513-436a-8d36-71bbb13cbaa2.mp4
+
+
+
+https://user-images.githubusercontent.com/20441485/137182141-58fb2eef-0d3f-41a2-a229-9be4fabd2d6b.mp4
 
