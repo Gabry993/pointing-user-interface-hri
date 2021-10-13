@@ -19,7 +19,7 @@ The PUI works as it follows:
 Note that for convenience, [docker_hri.launch](relloc/launch/docker_hri.launch) can be used to run both the global nodes and a set of nodes for one user. This was done to easily deploy demos from the docker containers.
 
 ### scenario_1_2_3_4.launch
-This [launch file](relloc/launch/scenario_1_2_3_4.launc) will launch the nodes needed for the PUI and for the interaction with the systems.
+This [launch file](relloc/launch/scenario_1_2_3_4.launch) will launch the nodes needed for the PUI and for the interaction with the systems.
 For the PUI it will launch, based on `single_LED` parameters, one between:
 - `pui_node`: standard PUI node.
 - `single_pui_node`: PUI node which compute the intersection between pointing rays and single LED lights.
