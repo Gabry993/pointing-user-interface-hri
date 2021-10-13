@@ -127,7 +127,7 @@ As an alternative, both in simulation and real world, one can press _n_ button o
 ### Enabling Relloc
 By default, all scenarios will run without relative localization. To change this behavior, open the demo GUI in CoppeliaSim by clicking the icon marked in the image and check _Bill should perform  localization procedure_ (do this before starting the scene).
 
-![picture alt](img/demo_gui.png "demo GUI icon") 
+![demo gui icon](img/demo_gui.png "demo GUI icon") ![demo gui](img/demo_gui_opened.png "demo GUI") 
 
 If this option is checked, after triggering the interaction, Bill will perform the relative localization first.
 Also, when launching the `pointing-user-interface` container, set the environment variable `DO_RELLOC=True`, like this:
