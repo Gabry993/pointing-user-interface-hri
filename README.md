@@ -122,7 +122,6 @@ Here you can see the icon needed to open Bill's GUI.
 ![bill gui icon](img/bill_gui.png "bill GUI icon") 
 
 If you can not see this small window ![push metawear button](img/bill_button.png "bill button") , it means that the scene is not playing: remember to start it before, by pressing the play button ![play button img](img/play.png "play button icon") , then open Bill's GUI again.
-As an alternative, both in simulation and real world, one can press _n_ button on the keyboard to go on with the interaction, but this will work only in a single user scenario.
 
 ### Enabling Relloc
 By default, all scenarios will run without relative localization. To change this behavior, open the demo GUI in CoppeliaSim by clicking the icon marked in the image and check _Bill should perform  localization procedure_ (do this before starting the scene).
