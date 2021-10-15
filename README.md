@@ -50,6 +50,7 @@ Our PUI interface has 3 inputs:
 
 Thanks to **1**, it can intersect **2** with **3** and produce its only output:
 * pointing cursor position in `world` frame.
+
 This output can then be integrated and deployed for a variety of tasks. In this realese, we focus on a task of object selection (i.e. selection of packages on industrial conveyor belt).
 
 ## 1 - User's Position
