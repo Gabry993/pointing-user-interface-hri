@@ -49,7 +49,9 @@ Our PUI interface has 3 inputs:
 3. updated map of the environment and of the objects in it
 
 Thanks to **1**, it can intersect **2** with **3** and produce its only output:
-* list of selected objects
+* pointing cursor position in `world` frame.
+This output can then be integrated and deployed for a variety of tasks. In this realese, we focus on a task of object selection (i.e. selection of packages on industrial conveyor belt).
+
 ## 1 - User's Position
 This can be given a priori or computed/tracked. In our code, we provide configurations both to fix it
 and to compute it through our relative localization (_relloc_) approach. In general, it must be published
