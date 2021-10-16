@@ -147,6 +147,10 @@ https://user-images.githubusercontent.com/20441485/137200706-6fdad541-4d59-4754-
 https://user-images.githubusercontent.com/20441485/137202388-8d46df7b-9de8-4986-94d0-413ecdbf424a.mp4
 
 
+https://user-images.githubusercontent.com/20441485/137575092-c7356cba-2a1a-4757-89f8-423a9c61f538.mp4
+
+
+
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
 ```
