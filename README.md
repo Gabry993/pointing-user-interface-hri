@@ -144,8 +144,6 @@ The color will be mapped to a specified colormap according to how close the poin
 
 https://user-images.githubusercontent.com/20441485/137200706-6fdad541-4d59-4754-bc43-37ededdaed59.mp4
 
-https://user-images.githubusercontent.com/20441485/137202388-8d46df7b-9de8-4986-94d0-413ecdbf424a.mp4
-
 
 https://user-images.githubusercontent.com/20441485/137575092-c7356cba-2a1a-4757-89f8-423a9c61f538.mp4
 
@@ -201,7 +199,9 @@ The color of this cursor is mapped to a specified colormap according to how clos
 
 https://user-images.githubusercontent.com/20441485/137200744-6cb86653-8739-4409-b3b7-d3ff7164ba19.mp4
 
-https://user-images.githubusercontent.com/20441485/137202445-d9286775-ad4e-4d6f-abdc-18898f7cdfd7.mp4
+
+https://user-images.githubusercontent.com/20441485/137575124-9ecedfdf-f261-439c-b2a5-21795c7da2de.mp4
+
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
@@ -258,7 +258,9 @@ In this scenario, the pointing cursor is yellow (i.e. is not mapped to a colorma
 
 https://user-images.githubusercontent.com/20441485/137200779-e93a369a-5ceb-49b1-b688-559b469d90a8.mp4
 
-https://user-images.githubusercontent.com/20441485/137202483-89d2b6d7-fcf0-4055-8788-d55bdfc54576.mp4
+
+https://user-images.githubusercontent.com/20441485/137575125-ca40d26a-a337-4b1f-89ed-e4034cd8b3b7.mp4
+
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
