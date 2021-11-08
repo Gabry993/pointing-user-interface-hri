@@ -8,21 +8,46 @@ All components and drivers needed are released as docker containers, to facilita
 Dockerfiles provides a convenient list of steps to rebuild the environment manually, if needed.
 
 # Installation
+Those containers were tested on Ubuntu 18.04/20.04 host machines running docker `20.10.7`. They were also tested on Windows 10 Enterprise 21H1 running `Docker Desktop 4.1.1` with `WSL 2` backend. We were not able to test on `macOS`.
+Here we report the steps needed to run the containers on both tested OS.
 
-1. Install [docker](https://docs.docker.com/get-docker) and [docker-compose](https://docs.docker.com/compose/install/)
-2. Clone this repository locally.
-3. Step into the `docker` folder and then in each subfolder to pull the container for each component.
+<details>
+  <summary>UBUNTU</summary>
+  
+  1. Install [docker](https://docs.docker.com/get-docker) and [docker-compose](https://docs.docker.com/compose/install/). Check also this [post-install paragraph](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) to manage docker as a non-root user (otherwise remember to run all docker commands with `sudo`).
+  2. Clone this repository locally.
+  3. Step into the `docker` folder and then in each subfolder to pull the container for each component.
    ```
    cd REPO_ROOT_FOLDER
    cd docker/pointing-user-interface
-   sudo docker-compose -f scenario_1_sim.yaml pull
+   docker-compose -f scenario_1_sim.yaml pull
    cd ../simulation
-   sudo docker-compose pull
+   docker-compose -f docker-compose-linux.yml pull
    cd ../real_world
-   sudo docker-compose pull
+   docker-compose pull
    ```
-Note that those containers were tested on Ubuntu 18.04 and 20.04 host machines running docker `20.10.7`. They should work out of the box with other
-OS, except for `simulation` one, which may need to be adapted to work with the GUI.
+   
+</details>
+
+<details>
+  <summary>WINDOWS</summary>
+  
+  1. Install [docker](https://docs.docker.com/desktop/windows/install/) using `Windows Subsystem for Linux (WSL2)` backend. `docker-compose` is included in this installation.
+  2. Install [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/). This is needed to get GUI apps running from linux containers (i.e. CoppeliaSim GUI).
+  3. Open a terminal/PowerShell.
+  4. Clone this repository locally.
+  5. Step into the `docker` folder and then in each subfolder to pull the container for each component.
+   ```
+   cd REPO_ROOT_FOLDER
+   cd docker/pointing-user-interface
+   docker-compose -f scenario_1_sim.yaml pull
+   cd ../simulation
+   docker-compose -f docker-compose-win.yml pull
+   cd ../real_world
+   docker-compose pull
+   ```
+   
+</details>
 
 ## Source Code
 The source code can be found in [docker/pointing-user-interface/code](docker/pointing-user-interface/code/) along with the documentation to launch the ROS2 nodes for the PUI directly.
