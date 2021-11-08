@@ -34,7 +34,7 @@ Here we report the steps needed to run the containers on both tested OS.
   
   1. Install [docker](https://docs.docker.com/desktop/windows/install/) using `Windows Subsystem for Linux (WSL2)` backend. `docker-compose` is included in this installation.
   2. Install [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/). This is needed to get GUI apps running from linux containers (i.e. CoppeliaSim GUI).
-  3. Open a terminal/PowerShell.
+  3. Open a WSL terminal (search for WSL in windows). Note that everything will work from a regular/PowerShell terminal as well, but the syntax may differ from what we report in the readme (which is linux based), in particular when setting environmental variables.
   4. Clone this repository locally.
   5. Step into the `docker` folder and then in each subfolder to pull the container for each component.
    ```
@@ -176,12 +176,34 @@ https://user-images.githubusercontent.com/20441485/137575092-c7356cba-2a1a-4757-
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
-```
-cd REPO_ROOT_FOLDER
-cd docker/simulation
-xhost +local:root # otherwise the GUI won't work
-sudo docker-compose up
-```
+<details>
+  <summary>UBUNTU</summary>
+  
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  xhost +local:root # otherwise the GUI won't work
+  docker-compose -f docker-compose-linux.yml up
+  ```
+</details>
+
+<details>
+  <summary>WINDOWS</summary>
+  
+  1. Start XLaunch
+  2. Leave default settings and press `Next` (Multiple windows, Display number -1)
+  3. Leave default settings and press `Next` (Start no client)
+  4. Remove flag from `Native opengl` and press `Next`
+  5. Press `Finish`
+  
+  Open a WSL terminal:
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  docker-compose -f docker-compose-win.yml up
+  ```
+</details>
+
 Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_1.ttt`.
 
 If you want to run the relative localization, do [this](#enabling-relloc).
@@ -192,9 +214,9 @@ After this, start the PUI nodes:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_1_sim.yaml up
+docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-sudo DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
+DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
 Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
 
@@ -203,7 +225,7 @@ First, launch all the drivers for the real world scenarios:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/real_world
-sudo USER_NAME=human docker-compose up
+USER_NAME=human docker-compose up
 ```
 The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
@@ -211,9 +233,9 @@ Then, launch the relevant docker compose:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_1_real.yaml up
+docker-compose -f scenario_1_real.yaml up
 # or, if you want to perform relloc
-sudo DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
+DO_RELLOC=True docker-compose -f scenario_1_real.yaml up
 ```
 Start the interaction by pressing the metawear button.
 
@@ -230,12 +252,34 @@ https://user-images.githubusercontent.com/20441485/137575124-9ecedfdf-f261-439c-
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
-```
-cd REPO_ROOT_FOLDER
-cd docker/simulation
-xhost +local:root # otherwise the GUI won't work
-sudo docker-compose up
-```
+<details>
+  <summary>UBUNTU</summary>
+  
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  xhost +local:root # otherwise the GUI won't work
+  docker-compose -f docker-compose-linux.yml up
+  ```
+</details>
+
+<details>
+  <summary>WINDOWS</summary>
+  
+  1. Start XLaunch
+  2. Leave default settings and press `Next` (Multiple windows, Display number -1)
+  3. Leave default settings and press `Next` (Start no client)
+  4. Remove flag from `Native opengl` and press `Next`
+  5. Press `Finish`
+  
+  Open a WSL terminal:
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  docker-compose -f docker-compose-win.yml up
+  ```
+</details>
+
 Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_2.ttt`.
 
 If you want to run the relative localization, do [this](#enabling-relloc).
@@ -246,9 +290,9 @@ After this, start the PUI nodes:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_2_sim.yaml up
+docker-compose -f scenario_2_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-sudo DO_RELLOC=True docker-compose -f scenario_2_sim.yaml up
+DO_RELLOC=True docker-compose -f scenario_2_sim.yaml up
 ```
 Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
 
@@ -257,7 +301,7 @@ First, launch all the drivers for the real world scenarios:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/real_world
-sudo USER_NAME=human docker-compose up
+USER_NAME=human docker-compose up
 ```
 The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
@@ -265,9 +309,9 @@ Then, launch the relevant docker compose:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_2_real.yaml up
+docker-compose -f scenario_2_real.yaml up
 # or, if you want to perform relloc
-sudo DO_RELLOC=True docker-compose -f scenario_2_real.yaml up
+DO_RELLOC=True docker-compose -f scenario_2_real.yaml up
 ```
 Start the interaction by pressing the metawear button.
 
@@ -289,12 +333,34 @@ https://user-images.githubusercontent.com/20441485/137575125-ca40d26a-a337-4b1f-
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
-```
-cd REPO_ROOT_FOLDER
-cd docker/simulation
-xhost +local:root # otherwise the GUI won't work
-sudo docker-compose up
-```
+<details>
+  <summary>UBUNTU</summary>
+  
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  xhost +local:root # otherwise the GUI won't work
+  docker-compose -f docker-compose-linux.yml up
+  ```
+</details>
+
+<details>
+  <summary>WINDOWS</summary>
+  
+  1. Start XLaunch
+  2. Leave default settings and press `Next` (Multiple windows, Display number -1)
+  3. Leave default settings and press `Next` (Start no client)
+  4. Remove flag from `Native opengl` and press `Next`
+  5. Press `Finish`
+  
+  Open a WSL terminal:
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  docker-compose -f docker-compose-win.yml up
+  ```
+</details>
+
 Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_3.ttt`.
 
 If you want to run the relative localization, do [this](#enabling-relloc).
@@ -305,9 +371,9 @@ After this, start the PUI nodes:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_3_sim.yaml up
+docker-compose -f scenario_3_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-sudo DO_RELLOC=True docker-compose -f scenario_3_sim.yaml up
+DO_RELLOC=True docker-compose -f scenario_3_sim.yaml up
 ```
 Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
 
@@ -316,7 +382,7 @@ First, launch all the drivers for the real world scenarios:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/real_world
-sudo USER_NAME=human docker-compose up
+USER_NAME=human docker-compose up
 ```
 The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
@@ -324,9 +390,9 @@ Then, launch the relevant docker compose:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_3_real.yaml up
+docker-compose -f scenario_3_real.yaml up
 # or, if you want to perform relloc
-sudo DO_RELLOC=True docker-compose -f scenario_3_real.yaml up
+DO_RELLOC=True docker-compose -f scenario_3_real.yaml up
 ```
 Start the interaction by pressing the metawear button.
 
@@ -345,12 +411,34 @@ https://user-images.githubusercontent.com/20441485/137204163-ab0c994c-9c5b-4550-
 
 ### Simulation
 First, launch CoppeliaSim container, if it is not running already:
-```
-cd REPO_ROOT_FOLDER
-cd docker/simulation
-xhost +local:root # otherwise the GUI won't work
-sudo docker-compose up
-```
+<details>
+  <summary>UBUNTU</summary>
+  
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  xhost +local:root # otherwise the GUI won't work
+  docker-compose -f docker-compose-linux.yml up
+  ```
+</details>
+
+<details>
+  <summary>WINDOWS</summary>
+  
+  1. Start XLaunch
+  2. Leave default settings and press `Next` (Multiple windows, Display number -1)
+  3. Leave default settings and press `Next` (Start no client)
+  4. Remove flag from `Native opengl` and press `Next`
+  5. Press `Finish`
+  
+  Open a WSL terminal:
+  ```
+  cd REPO_ROOT_FOLDER
+  cd docker/simulation
+  docker-compose -f docker-compose-win.yml up
+  ```
+</details>
+
 Then, from CoppeliaSim top-bar menu, click `File -> Open scene...` , navigate to `/ros_ws/src/coppelia_scenes/` and open `tutorial_scenario_4.ttt`.
 
 If you want to run the relative localization, do [this](#enabling-relloc).
@@ -361,9 +449,9 @@ After this, start the PUI nodes:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_4_sim.yaml up
+docker-compose -f scenario_4_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
-sudo DO_RELLOC=True docker-compose -f scenario_4_sim.yaml up
+DO_RELLOC=True docker-compose -f scenario_4_sim.yaml up
 ```
 Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
 
@@ -372,7 +460,7 @@ First, launch all the drivers for the real world scenarios:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/real_world
-sudo USER_NAME=human docker-compose up
+USER_NAME=human docker-compose up
 ```
 The `USER_NAME` variable is needed to define different user namespaces in case multiple users are interacting with the PUI.
 
@@ -380,9 +468,9 @@ Then, launch the relevant docker compose:
 ```
 cd REPO_ROOT_FOLDER
 cd docker/pointing-user-interface
-sudo docker-compose -f scenario_4_real.yaml up
+docker-compose -f scenario_4_real.yaml up
 # or, if you want to perform relloc
-sudo DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
+DO_RELLOC=True docker-compose -f scenario_4_real.yaml up
 ```
 Start the interaction by pressing the metawear button.
 
