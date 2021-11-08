@@ -218,7 +218,7 @@ docker-compose -f scenario_1_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_1_sim.yaml up
 ```
-Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#pressing-buttons).
 
 ### Real World
 First, launch all the drivers for the real world scenarios:
@@ -294,7 +294,7 @@ docker-compose -f scenario_2_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_2_sim.yaml up
 ```
-Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#pressing-buttons).
 
 ### Real World
 First, launch all the drivers for the real world scenarios:
@@ -375,7 +375,7 @@ docker-compose -f scenario_3_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_3_sim.yaml up
 ```
-Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#pressing-buttons).
 
 ### Real World
 First, launch all the drivers for the real world scenarios:
@@ -453,7 +453,7 @@ docker-compose -f scenario_4_sim.yaml up
 # or, if you want to perform relloc (remeber to set also the demo GUI in Coppelia)
 DO_RELLOC=True docker-compose -f scenario_4_sim.yaml up
 ```
-Finally, start the interaction by pressing the virtual-metawear button as described [here](#interaction).
+Finally, start the interaction by pressing the virtual-metawear button as described [here](#pressing-buttons).
 
 ### Real World
 First, launch all the drivers for the real world scenarios:
